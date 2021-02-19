@@ -1,19 +1,17 @@
-const express = require('express');
- 
-const app = express(); 
+const express = require("express");
 
+const app = express();
 
-//Middleware 
+//Middleware
 
+// Routes
+app.get("/", (req, res) => {
+  res.send("Something");
+});
 
-// Routes 
-app.get('/',(req, res) => {
-    res.send("Something");
-})
+app.get("/Opskrifter", (req, res) => {
+  res.send("Her er nogle opskrifter...");
+});
 
-app.get('/Opskrifter', (req, res) => {
-    res.send('Her er nogle opskrifter...')
-})
-
-// How to listen 
-app.listen(3000); 
+// How to listen
+app.listen(3000);
