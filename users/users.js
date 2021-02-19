@@ -24,12 +24,4 @@ module.exports = users = [
     lastName: "User",
     role: Role.User,
   },
-  {
-    id: 4,
-    username: "Lasse",
-    password: "Lasse",
-    firstName: "Lasse",
-    lastName: "Guest",
-    role: Role.Guest,
-  },
 ];

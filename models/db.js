@@ -56,7 +56,7 @@ process.on("SIGTERM", () => {
 
 async function seeder() {
   try {
-    await mongoose.connect(url, {
+    await mongoose.connect(dbUrl, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
       useCreateIndex: true,
@@ -67,14 +67,17 @@ async function seeder() {
 
   const db = mongoose.connection;
 
-  try {
-    let savedDocument = await User.create(users);
-    console.log(savedDocument);
-  } catch (error) {
-    console.log(error);
-  } finally {
-    // Ensures that the client will close when you finish/error
-    await db.close();
+  let user = await User.estimatedDocumentCount();
+  if (!user) {
+    try {
+      let savedDocument = await User.create(users);
+      console.log(savedDocument);
+    } catch (error) {
+      console.log(error);
+    } finally {
+      // Ensures that the client will close when you finish/error
+      await db.close();
+    }
   }
 }
 
