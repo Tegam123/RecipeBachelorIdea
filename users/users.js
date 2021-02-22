@@ -1,27 +1,31 @@
 const Role = require("../_helpers/role");
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
+const plaintextPassword = 'qwerasdf';
+
+bcrypt.hash(plaintextPassword, saltRounds).then(function(hash) {
+// Store hash in your password DB.
+});
 module.exports = users = [
   {
-    id: 1,
     username: "Poul",
-    password: "Poul",
+    password: "$2b$10$Kf9OFQxitojQMDbaY/xdTu2NbCLWt7pKns6bHPVNtm1E7TO12UdC.",
     firstName: "Poul",
-    lastName: "Administrator",
+    lastName: "Ejnar",
     role: Role.Administrator,
   },
   {
-    id: 2,
     username: "David",
-    password: "David",
+    password: "$2b$10$X471xReI.UIXY8hTR2wycehIFoMOo8v6AXSdUnIwoQlaVm46GSgSi",
     firstName: "David",
-    lastName: "Manager",
+    lastName: "Tegam",
     role: Role.Manager,
   },
   {
-    id: 3,
     username: "Victor",
-    password: "Victor",
+    password: "$2b$10$RZ5FR54H/c7Zy/2N/bbEmO9AAwUolXwyrVuR8XsDvOmoZh5X9Qgpy",
     firstName: "Victor",
-    lastName: "User",
+    lastName: "Kildahl",
     role: Role.User,
   },
 ];

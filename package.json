@@ -4,7 +4,7 @@
   "description": "My Recipe app",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon app.js"
+    "start": "nodemon ./app.js"
   },
   "keywords": [
     "Food",
@@ -13,10 +13,14 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^5.0.0",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
+    "express-jwt": "^6.0.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.11.17",
     "nodemon": "^2.0.7",
+    "rootpath": "^0.1.2",
     "swagger-jsdoc": "5.0.1",
     "swagger-ui-express": "^4.1.6"
   }

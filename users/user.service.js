@@ -1,6 +1,9 @@
 const config = require("config.json");
 const jwt = require("jsonwebtoken");
 const Role = require("_helpers/role");
+const users = require("../models/userschema");
+const bcrypt = require('bcrypt');
+const { db } = require("../models/userschema");
 
 module.exports = {
   authenticate,
@@ -8,30 +11,46 @@ module.exports = {
   getById,
 };
 
+
+
 async function authenticate({ username, password }) {
-  const user = users.find(
-    (u) => u.username === username && u.password === password
-  );
-  if (user) {
-    const token = jwt.sign({ sub: user.id, role: user.role }, config.secret);
-    const { password, ...userWithoutPassword } = user;
-    return {
-      ...userWithoutPassword,
-      token,
+  const user = await users.findOne({username: username});
+
+  let Ispasswordvalid = await bcrypt.compare(password, user.password).then(function (res) {
+    return res
+    });
+  if (Ispasswordvalid){
+  const token = jwt.sign({ sub: user.id, role: user.role }, config.secret);
+  return {
+    token
     };
   }
 }
 
 async function getAll() {
-  return users.map((u) => {
-    const { password, ...userWithoutPassword } = u;
-    return userWithoutPassword;
-  });
+
+  const dbusers = await users.find({})
+    .catch(reason =>
+      res.status(400).json({
+          "title": "Unable to read users from the database",
+          "detail": reason
+      })
+    );
+  return dbusers.map(u => {
+    return {
+      firstname: u.firstName,
+      lastname: u.lastName,
+      username: u.username,
+      role: u.role};
+  })
 }
 
 async function getById(id) {
-  const user = users.find((u) => u.id === parseInt(id));
+  const dbuser = users.findById(id);
   if (!user) return;
-  const { password, ...userWithoutPassword } = user;
-  return userWithoutPassword;
+  return {
+    firstname: dbuser.firstName,
+    lastname: dbuser.lastName,
+    username: dbuser.username,
+    role: dbuser.role};
 }
