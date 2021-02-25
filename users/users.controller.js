@@ -6,6 +6,7 @@ const Role = require("_helpers/role");
 
 /// ROUTES ///
 router.post("/authenticate", authenticate); // public route
+router.post("/register", register); // public route
 router.get("/lars", authorize(Role.Admin), getAll); // admin only
 router.get("/:id", authorize(), getById); // all authenticated users
 module.exports = router;
@@ -19,6 +20,17 @@ function authenticate(req, res, next) {
         : res.status(400).json({ message: "Username or password is incorrect" })
     )
     .catch((err) => next(err));
+}
+
+function register(req, res, next) {
+  userService
+    .register(req.body)
+    .then((user) =>
+      user
+        ? res.json(user)
+        : res.status(400).json({ message: "User was not created" })
+    )
+    .catch((err) => next("hej med dig"));
 }
 
 function getAll(req, res, next) {

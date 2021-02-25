@@ -76,7 +76,7 @@ async function seeder() {
       console.log(error);
     } finally {
       // Ensures that the client will close when you finish/error
-      await db.close();
+      //await db.close();
     }
   }
 }

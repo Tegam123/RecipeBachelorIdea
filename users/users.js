@@ -1,11 +1,8 @@
 const Role = require("../_helpers/role");
-const bcrypt = require('bcrypt');
+const bcrypt = require("bcrypt");
 const saltRounds = 10;
-const plaintextPassword = 'qwerasdf';
+const plaintextPassword = "qwerasdf";
 
-bcrypt.hash(plaintextPassword, saltRounds).then(function(hash) {
-// Store hash in your password DB.
-});
 module.exports = users = [
   {
     username: "Poul",
