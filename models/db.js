@@ -3,6 +3,8 @@ const User = require("./userschema");
 const users = require("../users/users");
 const Recipe = require("./recipeSchema");
 const recipes = require("../recipes/recipes");
+const Category = require("./categorySchema");
+const categories = require("../categories/categories");
 let dbUrl = "mongodb://localhost:27017/Recipe";
 
 // Det her kan vi finde ud af når vi en gang deployer
@@ -73,7 +75,8 @@ async function seeder() {
   if (!user) {
     try {
       await User.create(users);
-      let savedDocument = await Recipe.create(recipes);
+      await Recipe.create(recipes);
+      let savedDocument = await Category.create(categories);
       console.log(savedDocument);
     } catch (error) {
       console.log(error);
