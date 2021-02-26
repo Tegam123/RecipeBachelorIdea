@@ -1,10 +1,6 @@
-<<<<<<< HEAD
 require('rootpath')();
 
 // Express
-=======
-require("rootpath")();
->>>>>>> 93a1167b4886f22862cc7703e3fe0ef21e31c0e4
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
@@ -90,20 +86,20 @@ app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 app.use('/users', userRouter);
 app.use('/recipes', recipeRouter);
 app.use('/admin', adminRouter);
+//MAKE ROUTES FOR CATEGORIES!!!!!
+//MAKE ROUTES FOR CATEGORIES!!!!!
+//MAKE ROUTES FOR CATEGORIES!!!!!
+
 
 
 // Routes
 //Call by baseurl/users/{Endpoint}
-<<<<<<< HEAD
 // app.use('/users', require('./users/users.controller'));
 //app.use('/recipes', require('./recipes/recipe.controller'));
+//app.use("/categories", require("./categories/category.controller"));
 //app.use('/admin', require('./admin/admin.controller'));
-=======
-app.use("/users", require("./users/users.controller"));
-app.use("/recipes", require("./recipes/recipe.controller"));
-app.use("/categories", require("./categories/category.controller"));
-app.use("/admin", require("./admin/admin.controller"));
->>>>>>> 93a1167b4886f22862cc7703e3fe0ef21e31c0e4
+
+
 app.use(cors());
 
 // global error handler
