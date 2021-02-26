@@ -1,18 +1,10 @@
-const express = require("express");
-const router = express.Router();
-const authorize = require("_helpers/authorize");
 const categoryService = require("./category.service");
-const Role = require("_helpers/role");
 
-/// ROUTES ///
-router.get("/getcategories", getCategories); // public route
-router.post(
-  "/createcategory",
-  authorize([Role.Administrator, Role.Manager]),
-  createCategory
-); // public route
-router.get("/getrecipes/:category", getRecipes);
-module.exports = router;
+module.exports = {
+  getCategories,
+  createCategory,
+  getRecipes
+};
 
 function getCategories(req, res, next) {
   categoryService

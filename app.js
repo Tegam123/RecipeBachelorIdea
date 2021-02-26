@@ -15,6 +15,7 @@ const swaggerUi = require('swagger-ui-express');
 var userRouter = require('./router/users');
 var adminRouter = require('./router/admin');
 var recipeRouter = require('./router/recipe');
+var categoryRouter = require('./router/categories');
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -86,11 +87,7 @@ app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 app.use('/users', userRouter);
 app.use('/recipes', recipeRouter);
 app.use('/admin', adminRouter);
-//MAKE ROUTES FOR CATEGORIES!!!!!
-//MAKE ROUTES FOR CATEGORIES!!!!!
-//MAKE ROUTES FOR CATEGORIES!!!!!
-
-
+app.use('/categories', categoryRouter);
 
 // Routes
 //Call by baseurl/users/{Endpoint}
@@ -102,7 +99,7 @@ app.use('/admin', adminRouter);
 
 app.use(cors());
 
-// global error handler
+// global error handle
 app.use(errorHandler);
 
 // start server
