@@ -1,12 +1,8 @@
-const express = require("express");
-const router = express.Router();
 const adminService = require("./admin.service");
-const authorize = require("_helpers/authorize");
-const Role = require("_helpers/role");
 
-/// ROUTES ///
-router.post("/promote/:id", authorize(Role.Administrator), promote); // public route
-module.exports = router;
+module.exports = {
+  promote,
+};
 
 function promote(req, res, next) {
   adminService

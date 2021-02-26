@@ -1,14 +1,10 @@
 const express = require("express");
-const router = express.Router();
-const authorize = require("_helpers/authorize");
 const recipeService = require("./recipe.service");
-const Role = require("_helpers/role");
 
-/// ROUTES ///
-router.get("/getrecipes", getRecipes); // public route
-router.post("/createrecipe", authorize([Role.User, Role.Administrator, Role.Manager]), createRecipe); // public route
-module.exports = router;
-
+module.exports = {
+  getRecipes,
+  createRecipe,
+};
 
 function getRecipes(req, res, next) {
     recipeService

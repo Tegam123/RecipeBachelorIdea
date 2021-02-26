@@ -1,15 +1,13 @@
 const express = require("express");
-const router = express.Router();
 const userService = require("./user.service");
-const authorize = require("_helpers/authorize");
 const Role = require("_helpers/role");
 
-/// ROUTES ///
-router.post("/authenticate", authenticate); // public route
-router.post("/register", register); // public route
-router.get("/lars", authorize(Role.Admin), getAll); // admin only
-router.get("/:id", authorize(), getById); // all authenticated users
-module.exports = router;
+module.exports = {
+  authenticate,
+  register,
+  getAll,
+  getById,
+};
 
 function authenticate(req, res, next) {
   userService
