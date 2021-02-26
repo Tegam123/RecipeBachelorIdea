@@ -1,9 +1,10 @@
-const Categories = require("categories/categories");
 const Category = require("../models/categorySchema");
+const recipes = require("../models/recipeSchema");
 
 module.exports = {
   getCategories,
   createCategory,
+  getRecipes,
 };
 
 async function getCategories() {
@@ -16,4 +17,10 @@ async function createCategory({ name }) {
     name: name,
   });
   return category;
+}
+
+async function getRecipes(category) {
+  var result = await recipes.find({ category: category });
+  //findByIdAndUpdate(id,{"role": Role.Manager});
+  return result;
 }

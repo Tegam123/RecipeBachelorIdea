@@ -1,4 +1,3 @@
-const Categories = require("categories/categories");
 const Recipe = require("../models/recipeSchema");
 
 module.exports = {

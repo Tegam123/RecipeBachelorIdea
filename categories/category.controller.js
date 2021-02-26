@@ -11,6 +11,7 @@ router.post(
   authorize([Role.Administrator, Role.Manager]),
   createCategory
 ); // public route
+router.get("/getrecipes/:category", getRecipes);
 module.exports = router;
 
 function getCategories(req, res, next) {
@@ -31,6 +32,17 @@ function createCategory(req, res, next) {
       categories
         ? res.json(categories)
         : res.status(400).json({ message: "Category could not be created" })
+    )
+    .catch((err) => next(err));
+}
+
+function getRecipes(req, res, next) {
+  categoryService
+    .getRecipes(req.params.category)
+    .then((user) =>
+      user
+        ? res.json(user)
+        : res.status(400).json({ message: "No foods with this category" })
     )
     .catch((err) => next(err));
 }
