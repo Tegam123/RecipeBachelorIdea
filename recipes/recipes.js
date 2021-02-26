@@ -1,22 +1,22 @@
-const Categories = require("../_helpers/categories");
+const Categories = require("../categories/categories");
 
 module.exports = recipes = [
   {
     name: "Lasagna with carrot",
-    ingrediens: ['Tomato', 'Carrot','Squash'],
+    ingrediens: ["Tomato", "Carrot", "Squash"],
     description: "Put tomatos in and mix",
-    category: Categories.Vegan,
+    category: "Vegan",
   },
   {
     name: "NoodleSoup",
-    ingrediens: ['Noodles', 'Water','Fingernails'],
+    ingrediens: ["Noodles", "Water", "Fingernails"],
     description: "Add nails for a good crisp",
-    category: Categories.WithMeat,
+    category: "WithMeat",
   },
   {
     name: "Bread",
-    ingrediens: ['Wheat', 'SweetCorn'],
+    ingrediens: ["Wheat", "SweetCorn"],
     description: "Mix together and bake",
-    category: Categories.Vegan,
+    category: "Vegan",
   },
 ];
