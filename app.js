@@ -1,11 +1,15 @@
+<<<<<<< HEAD
 require('rootpath')();
 
 // Express
+=======
+require("rootpath")();
+>>>>>>> 93a1167b4886f22862cc7703e3fe0ef21e31c0e4
 const express = require("express");
 const app = express();
-const bodyParser = require('body-parser');
-const errorHandler = require('_helpers/error-handler');
-const cors = require('cors');
+const bodyParser = require("body-parser");
+const errorHandler = require("_helpers/error-handler");
+const cors = require("cors");
 
 // Swagger
 const swaggerJSDoc = require('swagger-jsdoc');
@@ -77,7 +81,7 @@ const swaggerSpec = swaggerJSDoc(options);
 
 
 //Connects to db
-require('./models/db');
+require("./models/db");
 
 //Swagger
 app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
@@ -90,16 +94,23 @@ app.use('/admin', adminRouter);
 
 // Routes
 //Call by baseurl/users/{Endpoint}
+<<<<<<< HEAD
 // app.use('/users', require('./users/users.controller'));
 //app.use('/recipes', require('./recipes/recipe.controller'));
 //app.use('/admin', require('./admin/admin.controller'));
+=======
+app.use("/users", require("./users/users.controller"));
+app.use("/recipes", require("./recipes/recipe.controller"));
+app.use("/categories", require("./categories/category.controller"));
+app.use("/admin", require("./admin/admin.controller"));
+>>>>>>> 93a1167b4886f22862cc7703e3fe0ef21e31c0e4
 app.use(cors());
 
 // global error handler
 app.use(errorHandler);
 
 // start server
-const port = process.env.NODE_ENV === 'production' ? 80 : 5000;
+const port = process.env.NODE_ENV === "production" ? 80 : 5000;
 const server = app.listen(port, function () {
-    console.log('Server listening on port ' + port);
+  console.log("Server listening on port " + port);
 });
