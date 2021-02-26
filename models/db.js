@@ -1,6 +1,8 @@
 const mongoose = require("mongoose");
 const User = require("./userschema");
 const users = require("../users/users");
+const Recipe = require("./recipeSchema");
+const recipes = require("../recipes/recipes");
 let dbUrl = "mongodb://localhost:27017/Recipe";
 
 // Det her kan vi finde ud af når vi en gang deployer
@@ -70,7 +72,8 @@ async function seeder() {
   let user = await User.estimatedDocumentCount();
   if (!user) {
     try {
-      let savedDocument = await User.create(users);
+      await User.create(users);
+      let savedDocument = await Recipe.create(recipes);
       console.log(savedDocument);
     } catch (error) {
       console.log(error);

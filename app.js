@@ -16,19 +16,12 @@ require('./models/db');
 // Routes
 //Call by baseurl/users/{Endpoint}
 app.use('/users', require('./users/users.controller'));
+app.use('/recipes', require('./recipes/recipe.controller'));
+app.use('/admin', require('./admin/admin.controller'));
 app.use(cors());  
 
 // global error handler
 app.use(errorHandler);
-
-// app.get("/", (req, res) => {
-//    res.status(200)
-//    res.json({"message" : "Front page"});
-// });
-
-// app.get("/Opskrifter", (req, res) => {
-//   res.send("Her er nogle opskrifter...");
-// });
 
 // start server
 const port = process.env.NODE_ENV === 'production' ? 80 : 5000;

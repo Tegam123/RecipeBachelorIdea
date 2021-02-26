@@ -3,7 +3,7 @@ const jwt = require("jsonwebtoken");
 const Role = require("_helpers/role");
 const users = require("../models/userschema");
 const bcrypt = require("bcrypt");
-const { db } = require("../models/userschema");
+
 
 module.exports = {
   authenticate,

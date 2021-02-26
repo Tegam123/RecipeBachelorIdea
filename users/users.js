@@ -1,7 +1,4 @@
 const Role = require("../_helpers/role");
-const bcrypt = require("bcrypt");
-const saltRounds = 10;
-const plaintextPassword = "qwerasdf";
 
 module.exports = users = [
   {
