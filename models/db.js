@@ -11,15 +11,6 @@ if (process.env.NODE_ENV === 'production') {
 dbURI = process.env.MONGODB_URI;
 }
 
-console.log(process.env.NODE_ENV);
-console.log(dbURI);
-console.log(process.env.MONGODB_URI);
-// Det her kan vi finde ud af når vi en gang deployer
-
-// if (process.env.NODE_ENV === 'production') {
-//     dbUrl = process.env.MONGODB_URI;
-// }
-
 mongoose.connection.on("connected", () => {
   console.log(`Mongoose connected to ${dbURI}`);
 });
@@ -32,11 +23,7 @@ mongoose.connection.on("disconnected", () => {
 
 // Connect to database
 // Vil vi gøre det her?
-mongoose.connect(dbURI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  useCreateIndex: true,
-});
+mongoose.connect(dbURI);
 
 // Listen for signals to shutdown, so we can close the connection to the database
 const gracefulShutdown = (msg, callback) => {
