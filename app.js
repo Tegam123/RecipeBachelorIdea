@@ -51,31 +51,10 @@ const swaggerDefinition = {
 
 const options = {
     swaggerDefinition,
-    // : {
-    //     openapi: '3.0.1', // YOU NEED THIS
-    //     info: {
-    //       title: 'Your API title',
-    //       version: '1.0.0',
-    //       description: 'Your API description'
-    //     },
-    //     basePath: '/',
-    //     components: {
-    //       securitySchemes: {
-    //         bearerAuth: {
-    //           type: 'http',
-    //           scheme: 'bearer',
-    //           bearerFormat: 'JWT',
-    //         }
-    //       }
-    //     },
-
-    //   },
     apis: ['./router/*.js'],
 };
 
 const swaggerSpec = swaggerJSDoc(options);
-
-
 
 //Connects to db
 require("./models/db");
@@ -88,15 +67,6 @@ app.use('/users', userRouter);
 app.use('/recipes', recipeRouter);
 app.use('/admin', adminRouter);
 app.use('/categories', categoryRouter);
-
-// Routes
-//Call by baseurl/users/{Endpoint}
-// app.use('/users', require('./users/users.controller'));
-//app.use('/recipes', require('./recipes/recipe.controller'));
-//app.use("/categories", require("./categories/category.controller"));
-//app.use('/admin', require('./admin/admin.controller'));
-
-
 app.use(cors());
 
 // global error handle
