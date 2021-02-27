@@ -10,8 +10,10 @@ let dbUrl = "mongodb://localhost:27017/Recipe";
 if (process.env.NODE_ENV === 'production') {
 dbURI = process.env.MONGODB_URI;
 }
+
 console.log(process.env.NODE_ENV);
 console.log(dbUrl);
+console.log(process.env.MONGODB_URI);
 // Det her kan vi finde ud af når vi en gang deployer
 
 // if (process.env.NODE_ENV === 'production') {
