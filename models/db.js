@@ -5,14 +5,14 @@ const Recipe = require("./recipeSchema");
 const recipes = require("../recipes/recipes");
 const Category = require("./categorySchema");
 const categories = require("../categories/categories");
-let dbUrl = "mongodb://localhost:27017/Recipe";
+let dbURI = "mongodb://localhost:27017/Recipe";
 
 if (process.env.NODE_ENV === 'production') {
 dbURI = process.env.MONGODB_URI;
 }
 
 console.log(process.env.NODE_ENV);
-console.log(dbUrl);
+console.log(dbURI);
 console.log(process.env.MONGODB_URI);
 // Det her kan vi finde ud af når vi en gang deployer
 
@@ -21,7 +21,7 @@ console.log(process.env.MONGODB_URI);
 // }
 
 mongoose.connection.on("connected", () => {
-  console.log(`Mongoose connected to ${dbUrl}`);
+  console.log(`Mongoose connected to ${dbURI}`);
 });
 mongoose.connection.on("error", (err) => {
   console.log("Mongoose connection error:", err);
@@ -32,7 +32,7 @@ mongoose.connection.on("disconnected", () => {
 
 // Connect to database
 // Vil vi gøre det her?
-mongoose.connect(dbUrl, {
+mongoose.connect(dbURI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,
@@ -67,7 +67,7 @@ process.on("SIGTERM", () => {
 
 async function seeder() {
   try {
-    await mongoose.connect(dbUrl, {
+    await mongoose.connect(dbURI, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
       useCreateIndex: true,
