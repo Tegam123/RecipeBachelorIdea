@@ -11,6 +11,29 @@ const Role = require("_helpers/role");
  *   description: Managing the different users
  */
 
+/**
+ * @swagger
+ * /users/authenticate:
+ *   post:
+ *     summary: Login.
+ *     tags: [Users]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               username:
+ *                 type: string
+ *                 required: true
+ *               password:
+ *                 type: string
+ *                 required: true
+ *     responses:
+ *       200:
+ *         description: Logged in
+ */
 router.post("/authenticate", userController.authenticate); // public route
 
 /**
@@ -18,6 +41,7 @@ router.post("/authenticate", userController.authenticate); // public route
  * /users/register:
  *   post:
  *     summary: Create a user.
+ *     tags: [Users]
  *     requestBody:
  *       required: true
  *       content:
@@ -34,16 +58,16 @@ router.post("/authenticate", userController.authenticate); // public route
  *               lastname:
  *                 type: string
  *                 required: true
- *               password: 
+ *               password:
  *                 type: string
  *                 required: true
- *               role: 
+ *               role:
  *                 type: string
  *                 required: false
  *     responses:
  *       200:
  *         description: Created
-*/
+ */
 router.post("/register", userController.register); // public route
 
 /**
