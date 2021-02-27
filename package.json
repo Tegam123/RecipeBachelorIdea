@@ -4,7 +4,7 @@
   "description": "My Recipe app",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon ./app.js"
+    "start": "npm uninstall bcrypt &&  npm install bcrypt && nodemon ./app.js"
   },
   "engines": {
     "node": "^14.15.4",
