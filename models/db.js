@@ -7,6 +7,10 @@ const Category = require("./categorySchema");
 const categories = require("../categories/categories");
 let dbUrl = "mongodb://localhost:27017/Recipe";
 
+if (process.env.NODE_ENV === 'production') {
+dbURI = process.env.MONGODB_URI;
+}
+
 // Det her kan vi finde ud af når vi en gang deployer
 
 // if (process.env.NODE_ENV === 'production') {
