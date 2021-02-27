@@ -72,8 +72,14 @@ app.use(cors());
 // global error handle
 app.use(errorHandler);
 
-// start server
-const port = process.env.NODE_ENV === "production" ? 80 : 5000;
-const server = app.listen(port, function () {
-  console.log("Server listening on port " + port);
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, err => {
+    if(err) throw err;
+    console.log("%c Server running", "color: green");
 });
+// // start server
+// const port = process.env.NODE_ENV === "production" ? 80 : 5000;
+// const server = app.listen(port, function () {
+//   console.log("Server listening on port " + port);
+// });

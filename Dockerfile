@@ -1,21 +1,17 @@
 FROM node:lts
-
-
-WORKDIR /app
-
-RUN npm uninstall bcrypt
-RUN npm install bcrypt
-
-COPY package.json /app/package.json
-
-RUN npm uninstall bcrypt
-RUN npm install bcrypt
-
-RUN npm install
-
-COPY . /app
-EXPOSE 8080
-
-USER node
-
-CMD ["npm", "start"]
+ 
+ARG NODE_ENV=production
+ENV NODE_ENV $NODE_ENV
+ 
+WORKDIR /code
+ 
+ARG PORT=80
+ENV PORT $PORT
+ 
+COPY package.json /code/package.json
+COPY package-lock.json /code/package-lock.json
+RUN npm ci
+ 
+COPY . /code
+ 
+CMD [ "npm", "start" ]
