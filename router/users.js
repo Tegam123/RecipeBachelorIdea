@@ -1,8 +1,15 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const userController = require('../users/users.controller');
+const userController = require("../users/users.controller");
 const authorize = require("_helpers/authorize");
 const Role = require("_helpers/role");
+
+/**
+ * @swagger
+ * tags:
+ *   name: Users
+ *   description: Managing the different users
+ */
 
 router.post("/authenticate", userController.authenticate); // public route
 
@@ -39,14 +46,14 @@ router.post("/authenticate", userController.authenticate); // public route
 */
 router.post("/register", userController.register); // public route
 
-
 /**
  * @swagger
  * /users/getall:
  *   get:
- *     security:              
- *       - bearerAuth: []    
+ *     security:
+ *       - bearerAuth: []
  *     summary: Retrieve the list of users
+ *     tags: [Users]
  *     description: Retrieve a list of users. Can be used to something...
  *     responses:
  *       200:
@@ -63,7 +70,7 @@ router.post("/register", userController.register); // public route
  *                 firstname:
  *                   type: string
  *                   description: The user's firstname.
- *                   example: John 
+ *                   example: John
  *                 lastname:
  *                   type: string
  *                   description: The user's lastname.
@@ -76,4 +83,4 @@ router.post("/register", userController.register); // public route
 router.get("/getall", authorize(Role.Admin), userController.getAll); // admin only
 //router.get("/:id", authorize(), userController.getById); // all authenticated users
 
-module.exports = router; 
+module.exports = router;

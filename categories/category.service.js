@@ -12,11 +12,11 @@ async function getCategories() {
   return categories;
 }
 
-async function createCategory({ name }) {
-  const category = await Category.create({
-    name: name,
+async function createCategory({ category }) {
+  const categories = await Category.create({
+    category: category,
   });
-  return category;
+  return categories;
 }
 
 async function getRecipes(category) {

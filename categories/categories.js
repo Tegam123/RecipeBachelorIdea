@@ -1,11 +1,11 @@
 module.exports = categories = [
   {
-    name: "Vegan",
+    category: "Vegan",
   },
   {
-    name: "WithMeat",
+    category: "WithMeat",
   },
   {
-    name: "Vegetarian",
+    category: "Vegetarian",
   },
 ];
