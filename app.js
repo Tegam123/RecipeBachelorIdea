@@ -35,7 +35,10 @@ const swaggerDefinition = {
     servers: [{
         url: 'http://localhost:5000',
         description: 'Development server',
-      }, ],
+      },{
+        url: 'https://aqueous-spire-50292.herokuapp.com/',
+        description: 'production server',
+      } ],
     basePath: '/',
     components: {
       securitySchemes: {
