@@ -45,14 +45,12 @@ const Role = require("_helpers/role");
  */
 router.get("/getrecipes", recipeController.getRecipes); // public route
 
-////////VIRKER IKKE ENDNU//////////
-////////VIRKER IKKE ENDNU//////////
-////////VIRKER IKKE ENDNU//////////
-////////VIRKER IKKE ENDNU//////////
 /**
  * @swagger
  * /recipes/createrecipe:
  *   post:
+ *     security:
+ *       - bearerAuth: []
  *     summary: Create a recipe.
  *     tags: [Recipes]
  *     requestBody:

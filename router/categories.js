@@ -5,7 +5,6 @@ const authorize = require("_helpers/authorize");
 const Role = require("_helpers/role");
 
 /// ROUTES ///
-
 /**
  * @swagger
  * tags:
@@ -35,6 +34,28 @@ const Role = require("_helpers/role");
  */
 router.get("/getcategories", categoryController.getCategories); // public route
 
+/**
+ * @swagger
+ * /categories/createcategory:
+ *   post:
+ *     security:
+ *       - bearerAuth: []
+ *     summary: Create a category.
+ *     tags: [Categories]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               category:
+ *                 type: string
+ *                 description: The categories name.
+ *     responses:
+ *       200:
+ *         description: Created category
+ */
 router.post(
   "/createcategory",
   authorize([Role.Administrator, Role.Manager]),

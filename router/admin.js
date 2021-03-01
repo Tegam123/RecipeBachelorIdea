@@ -11,6 +11,25 @@ const Role = require("_helpers/role");
  *   description: Managing the different users
  */
 
+/**
+ * @swagger
+ * /admin/promote/{id}:
+ *   post:
+ *     security:
+ *       - bearerAuth: []
+ *     summary: Promote a user from User to Manager.
+ *     tags: [Admin]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         schema:
+ *           type: string
+ *         requried: true
+ *         description: The id of the user
+ *     responses:
+ *       200:
+ *         description: Promote successful
+ */
 router.post(
   "/promote/:id",
   authorize(Role.Administrator),

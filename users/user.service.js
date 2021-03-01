@@ -4,7 +4,6 @@ const Role = require("_helpers/role");
 const users = require("../models/userschema");
 const bcrypt = require("bcrypt");
 
-
 module.exports = {
   authenticate,
   register,
@@ -58,12 +57,15 @@ async function getAll() {
       detail: reason,
     })
   );
+
+  //let objectId = await users._id;
   return dbusers.map((u) => {
     return {
       firstname: u.firstName,
       lastname: u.lastName,
       username: u.username,
       role: u.role,
+      id: u._id,
     };
   });
 }
