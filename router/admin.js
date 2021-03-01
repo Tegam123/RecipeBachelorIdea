@@ -17,7 +17,7 @@ const Role = require("_helpers/role");
  *   post:
  *     security:
  *       - bearerAuth: []
- *     summary: Promote a user from User to Manager.
+ *     summary: Promote a user from User to Manager (This can only be done by an Administator (The only Administrator is Poul)).
  *     tags: [Admin]
  *     parameters:
  *       - in: path

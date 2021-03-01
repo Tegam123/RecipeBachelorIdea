@@ -8,14 +8,14 @@ const Role = require("_helpers/role");
  * @swagger
  * tags:
  *   name: Users
- *   description: Managing the different users
+ *   description: Managing the different users, here you can register, login and get all users and their ID's
  */
 
 /**
  * @swagger
  * /users/authenticate:
  *   post:
- *     summary: Login.
+ *     summary: Is used to Login with a user.
  *     tags: [Users]
  *     requestBody:
  *       required: true
@@ -40,7 +40,7 @@ router.post("/authenticate", userController.authenticate); // public route
  * @swagger
  * /users/register:
  *   post:
- *     summary: Create a user.
+ *     summary: Is used to create a new user.
  *     tags: [Users]
  *     requestBody:
  *       required: true
@@ -76,9 +76,9 @@ router.post("/register", userController.register); // public route
  *   get:
  *     security:
  *       - bearerAuth: []
- *     summary: Retrieve the list of users
+ *     summary: Retrieve the list of users, and their ID's (The ID of an user can be used to promote a User to a Manager, can only be done if an User is logged in).
  *     tags: [Users]
- *     description: Retrieve a list of users. Can be used to something...
+ *     description: Retrieve a list of users.
  *     responses:
  *       200:
  *         description: A list of users.

@@ -16,7 +16,7 @@ const Role = require("_helpers/role");
  * @swagger
  * /categories/getcategories:
  *   get:
- *     summary: Retrieve the list of categories
+ *     summary: This endpoints retrieves a list of all categories of recipes.
  *     tags: [Categories]
  *     description: Retrieve a list of categories.
  *     responses:
@@ -40,7 +40,7 @@ router.get("/getcategories", categoryController.getCategories); // public route
  *   post:
  *     security:
  *       - bearerAuth: []
- *     summary: Create a category.
+ *     summary: Here you can create a new category (This can only be done by an Administator or Manager (This could be Poul or David)).
  *     tags: [Categories]
  *     requestBody:
  *       required: true
@@ -66,7 +66,7 @@ router.post(
  * @swagger
  * /categories/getrecipes/{category}:
  *   get:
- *     summary: Retrieve the list of recipes in specific category
+ *     summary: Retrieve the list of recipes in a specific category.
  *     tags: [Categories]
  *     description: Retrieve the list of recipes in specific category.
  *     parameters:

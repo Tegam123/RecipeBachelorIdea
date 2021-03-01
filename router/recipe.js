@@ -51,7 +51,7 @@ router.get("/getrecipes", recipeController.getRecipes); // public route
  *   post:
  *     security:
  *       - bearerAuth: []
- *     summary: Create a recipe.
+ *     summary: This endpoint can be used to create a new recipe (This can only be done if an User is logged in).
  *     tags: [Recipes]
  *     requestBody:
  *       required: true
